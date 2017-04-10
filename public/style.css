@@ -1,0 +1,36 @@
+nav {
+	background-color: darkblue;
+}
+
+body {
+	background-color: darkblue;
+}
+
+img {
+	width: 100px;
+	height: 100px;
+	display: inline-block;
+	float: left;
+}
+
+row {
+	border:	solid;
+	margin: 0 100px;
+}
+
+.format-font {
+	font-family: "Times New Roman";
+	margin: 0 20px 20px 20px;
+	vertical-align: text-top;
+	font-variant: small-caps;
+	font-size: 40px;
+	color: gold;
+
+}
+
+span {
+	display: inline;
+	width: 10%;
+	display: inline-block;
+	float: left;
+}
