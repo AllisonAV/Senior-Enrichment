@@ -24,11 +24,18 @@ api.get('/campus', (req, res, next ) => {
 })
 
 // Get a user by id
+
 api.get('/user/:id', (req, res, next ) => {
-	return User.findById(req.params.id)
+console.log('PARAMS', req.params.id)
+	return User.findOne({ where: {id: +req.params.id}, include: [Campus] })
 	.then(User => res.send(User))
 	.catch(next)
 })
+// api.get('/user/:id', (req, res, next ) => {
+// 	return User.findById(req.params.id)
+// 	.then(User => res.send(User))
+// 	.catch(next)
+// })
 
 // Get a campus by id
 api.get('/campus/:id', (req, res, next ) => {
@@ -37,6 +44,14 @@ api.get('/campus/:id', (req, res, next ) => {
 	.catch(next)
 })
 
+// Get all users for a campus
+api.get('/campus/user/:id', (req, res, next ) => {
+	return User.findAll({
+		where: {campusId: req.params.id}
+	})
+	.then(Users => res.send(Users))
+	.catch(next)
+})
 // //update a User
 // api.post('/user/:id', (req, res, next) => {
 // 	User.update({
@@ -71,11 +86,11 @@ api.post('/campus/:id', (req, res, next) => {
 //add a User
 api.post('/user', function(req, res, next){
 	return User.create({
-		name: req.body.name,
-		email: req.body.email
+		name: "juliet",
+		email: "juliet@gmail.com"
 	}) 
 	.then( newUser => 
-		newUser.setCampus(1))
+		newUser.setCampus(3))
 	.then( newUser => res.send(newUser))
 	.catch(next);  
 })
@@ -83,7 +98,7 @@ api.post('/user', function(req, res, next){
 //add a campus
 api.post('/campus', (req, res, next) => {
 	return Campus.create({
-		name: 'jupiter'
+		name: 'earth'
 	})
 	.then( newCampus => res.send(newCampus))
 	.catch(next);

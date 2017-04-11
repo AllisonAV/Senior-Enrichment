@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 
 export default (props) => {
+	
 
 	var getCampuses = function(campus) {
-		return (
-		<div key={campus.name} className="col-sm-4">
-			<span className="format-font">{`${campus.name}`} </span>
-			<img src={campus.img} className="logo img-thumbnail nav-item" />
-		</div>)
+	return (
+	<figure key={campus.name} 
+		className="col-lg-6 figure" >
+			
+			<Link className="format-font"to={`/campus/${campus.id}`}>{campus.name} 
+			<img src={campus.img} className="logo img-thumbnail nav-item" /></Link>
+	</figure>)
 	}
 
 	return (
@@ -21,3 +25,13 @@ export default (props) => {
 		</div>
 		)
 }
+
+
+
+
+
+// <div key={campus.name} className="col-md-6">
+// 			<span className="format-font">{`${campus.name}`} </span>
+// 			<img src={campus.img} className="logo img-thumbnail nav-item" />
+// 			<br />
+// 		</div>)

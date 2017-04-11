@@ -3,6 +3,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const {resolve} = require('path')
+var path = require('path')
 
 const pkg = require('../package.json')
 
@@ -21,11 +22,12 @@ module.exports = app
   .use(bodyParser.urlencoded({ extended: true }))
   .use(bodyParser.json())
   .use(express.static(resolve(__dirname, '..', 'public'))) // Serve static files from ../public
+  .use('/jquery', express.static(path.join(__dirname, '/node_modules/jquery/dist')))
+  .use('/bootstrap', express.static(path.join(__dirname, '/node_modules/bootstrap/dist')))
+
   //.use('/api/user',require('../routes/users'))
   .use('/api', require('./api')) // Serve our api
   .get('/*', (_, res) => res.sendFile(resolve(__dirname, '..', 'public', 'index.html'))) // Send index.html for any other requests.
-
-
 
 
 

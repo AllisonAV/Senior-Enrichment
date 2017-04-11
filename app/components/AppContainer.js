@@ -5,19 +5,27 @@ import NavBar from './NavBar';
 import Campuses from './Campuses';
 import CampusesContainer from './CampusesContainer';
 
+import initialState from '../initialState'
+
 export default class AppContainer extends Component {
 	constructor (props) {
-		super(props)
-		this.state = {campuses: {}};
+		super(props);
+		this.state = initialState
 	}
 
 
 	componentDidMount() {
-		axios.get('/api/campus')
-		.then(res => res.data)
-		.then( listOfCampuses => {
-			this.setState({campuses: listOfCampuses})
-			console.log('props in componentDidMount', this.props)
+		Promise
+		.all([
+		axios.get('/api/campus'),
+		axios.get('/api/user')	
+		])
+		.then(res => res.map(r => r.data))
+		.then( data => {
+			this.setState({
+				campuses: data[0]
+			,	students: data[1]
+			})
 		})
 		.catch(err => console.error('Error is ', err))
 	}
@@ -25,7 +33,6 @@ export default class AppContainer extends Component {
 	render() {
 
 		const props = Object.assign({}, this.state); 
-		{console.log('props', this.props)}
 		return (
 		<div id="main" className="container-fluid">
 	        <div className="col-xs-2">

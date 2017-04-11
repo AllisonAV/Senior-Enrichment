@@ -6,11 +6,19 @@ body {
 	background-color: darkblue;
 }
 
-img {
-	width: 100px;
-	height: 100px;
-	display: inline-block;
-	float: left;
+.logo {
+    position: relative;
+    float: left;
+    width:  100px;
+    height: 100px;
+    background-position: 50% 50%;
+    background-repeat:   no-repeat;
+    background-size:     cover;
+}
+
+image{
+	width: 25%;
+	height: 25%;
 }
 
 row {
@@ -24,7 +32,7 @@ row {
 	vertical-align: text-top;
 	font-variant: small-caps;
 	font-size: 40px;
-	color: gold;
+	color: #9498A1;
 
 }
 
