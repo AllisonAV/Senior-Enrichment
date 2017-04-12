@@ -11,7 +11,6 @@ export default class student extends Component {
 			allowUpdate: false,
 		}
 		this.handleDelete = this.handleDelete.bind(this);
-		this.handleUpdate = this.handleUpdate.bind(this);
 	}
 
 	componentDidMount() {
@@ -27,13 +26,6 @@ export default class student extends Component {
 		.catch(err => console.error(err))
 	}
 	
-	handleUpdate() {
-		
-		this.setState({
-			allowUpdate:  !this.state.allowUpdate
-		})
-		console.log('IN UPDATE', this.state)
-	}
 
 	render () {
 		let studentsCampus;
@@ -56,9 +48,6 @@ export default class student extends Component {
 					<label className="format-font">Email:</label>
 					<label className="format-font2">{this.state.selectedStudent.email}</label>
 					<br />
-					<button className="btn btn-default"
-							onClick={this.handleUpdate}
-							>Update Student</button>
 					<button className="btn btn-default"
 							onClick={this.handleDelete}
 							>Delete</button>
