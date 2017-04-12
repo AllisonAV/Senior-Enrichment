@@ -3,13 +3,14 @@ import { Link } from 'react-router';
 
 export default (props) => {
 	
-
 	var getCampuses = function(campus) {
 	return (
 	<figure key={campus.name} 
 		className="col-lg-6 figure" >
 			
-			<Link className="format-font"to={`/campus/${campus.id}`}>{campus.name} 
+			<Link 
+				className="format-font"
+				to={`/campus/${campus.id}`}>{campus.name} 
 			<img src={campus.img} className="logo img-thumbnail nav-item" /></Link>
 	</figure>)
 	}
@@ -25,13 +26,3 @@ export default (props) => {
 		</div>
 		)
 }
-
-
-
-
-
-// <div key={campus.name} className="col-md-6">
-// 			<span className="format-font">{`${campus.name}`} </span>
-// 			<img src={campus.img} className="logo img-thumbnail nav-item" />
-// 			<br />
-// 		</div>)

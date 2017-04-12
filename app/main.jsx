@@ -17,15 +17,17 @@ import store from './store'
 import Root from './components/Root'
 import Index from './components/Index'
 
-import AppContainer from './components/AppContainer';
+
 import Student    from './components/Student';
 import Students   from './components/Students'
 import Campus   from './components/Campus';
 import Campuses from './components/Campuses';
 
-import StudentsContainer    from './components/StudentsContainer';
-import CampusesContainer from './components/CampusesContainer';
-import NewStudentContainer from './components/NewStudentContainer';
+import AppContainer from './containers/AppContainer';
+import StudentsContainer    from './containers/StudentsContainer';
+import CampusesContainer from './containers/CampusesContainer';
+import NewStudentContainer from './containers/NewStudentContainer';
+import NewCampusContainer from './containers/NewCampusContainer';
 
 //this is the original code with my additions - going to try react-redux
 ReactDOM.render (
@@ -38,6 +40,7 @@ ReactDOM.render (
 			<Route path='/user/:userId'  component={Student} />
 			<Route path='/campus/user/:campusId'  component={Students} />
 			<Route path='/student/new' component={NewStudentContainer} />
+			<Route path='/new/campus' component={NewCampusContainer} />
 			<IndexRedirect to='/campus' />
 		</Route>
 	</Router>

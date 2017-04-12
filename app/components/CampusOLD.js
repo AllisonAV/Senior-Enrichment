@@ -10,7 +10,6 @@ export default class campus extends Component {
 			  selectedCampus: {}
 			, students: []
 		}
-		this.handleDelete = this.handleDelete.bind(this);
 	}
 
 	componentDidMount() {
@@ -25,18 +24,12 @@ export default class campus extends Component {
 				selectedCampus: data[0]
 			,	students: data[1]
 		}))
-		
 		.catch(err => console.error(err))
 	}
-	handleDelete() {
-		axios.delete(`/api/campus/${this.props.params.userId}`)
-		.catch(err => console.error(err))
-	}
-
-
 
 	render () {
-
+		// const props = Object.assign({}, this.state)
+		console.log('STATE IN CAMPUS', this.state)
 	return (
 		<div>
 			<h1 className="format-font"> Interplanetary Academy Campuses </h1>
@@ -48,9 +41,7 @@ export default class campus extends Component {
 					className="format-font"
 					to={`/campus/user/${this.state.selectedCampus.id}`}>List of Students 
 				</Link>  
-				<button className="btn btn-default"
-							onClick={this.handleDelete}
-							>Delete</button>
+
 			</div>
 		</div>
 		)

@@ -11,5 +11,14 @@ module.exports = db.define('user', {
   email: {
   	type: Sequelize.STRING,
   	allowNull: false
-  }
+  },
+  img: Sequelize.STRING
+
+},{
+		hooks: {
+		beforeCreate: function(user){
+			user.img = './images/'+ user.name.toLowerCase() + '.jpg'
+		}
+		
+	}
 })

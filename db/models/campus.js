@@ -1,6 +1,7 @@
   'use strict';
 var Sequelize = require('sequelize')
 var db = require('../index.js')
+var User = require('./user')
 
 
 module.exports = db.define('campus', {
@@ -13,7 +14,14 @@ module.exports = db.define('campus', {
 {
 	hooks: {
 		beforeCreate: function(campus){
-			campus.img = './images/'+ campus.name + '.jpg'
+			campus.img = './images/'+ campus.name.toLowerCase() + '.jpg'
+		}
+		,
+		beforeDestroy: function(campus) {
+			User.findAll({where: {campusId: campus.id}})
+			.then (users => users.destroy({returning: true}))
+			.then (delUsers => console.log('deleted', delUsers))
+			.catch(err=>console.error(err));
 		}
 		
 	}

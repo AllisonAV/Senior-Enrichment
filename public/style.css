@@ -6,20 +6,26 @@ body {
 	background-color: darkblue;
 }
 
-.logo {
-    position: relative;
-    float: left;
-    width:  100px;
-    height: 100px;
-    background-position: 50% 50%;
-    background-repeat:   no-repeat;
-    background-size:     cover;
+label {
+	color: gold;
 }
 
-image{
-	width: 25%;
-	height: 25%;
+h4 {
+	color: gold;
 }
+
+label select {
+	color: black;
+}
+
+img {
+    position: relative;
+    float: left;
+    width:  200px !important;
+    height: 200px !important;
+}
+
+
 
 row {
 	border:	solid;
@@ -35,6 +41,15 @@ row {
 	color: #9498A1;
 
 }
+.format-font2 {
+	font-family: "Times New Roman";
+	margin: 0 20px 20px 20px;
+	vertical-align: text-top;
+	font-size: 40px;
+	color: gold;
+
+}
+
 
 span {
 	display: inline;

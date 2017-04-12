@@ -2,30 +2,32 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 
 export default (props) => {
+	let campusId
+	campusId = props.params.campusId ? props.params.campusId : 0;
+	//console.log('PROPS IN STUDENTS', props.params.campusId)
 
 	var getUsers = function(student) {
-		return (
-		<div key={student.name} >
-			<h3 className="format-font" >{`Name: ${student.name} Email: ${student.email}`}  </h3>
-			<Link 
-				to={`/user/${student.id}`}>{student.name}> 
-			</Link>
-		</div>
-		)
+		if (campusId === 0) {
+			return createStudents(student)
+		} else {
+			if (+campusId === student.campusId) {
+
+				return createStudents(student)
+			}
+		}
 	}
 
-	// var getUserFromCampus
-	//  = function() {
-	// 	return (
-	// 	<div key={user.name} >
-	// 		<h3 className="format-font" >{`Name: ${user.name} Email: ${user.email}`}  </h3>
-	// 		<Link 
-	// 			to={`/user/${user.id}`}>{user.name}> 
-	// 		</Link>
-	// 	</div>
-	// 	)
-	// }
-console.log('IN STUDENTS', props)
+	var createStudents = function(student) {
+		return (<figure key={student.name} 
+					className="col-lg-6 figure" >	
+				<Link 
+					className="format-font"
+					to={`/user/${student.id}`}>{student.name}		
+					<img src={student.img} className="logo img-thumbnail nav-item" />
+				</Link>
+			</figure>)
+	}
+
 	return (
 
 		<div>

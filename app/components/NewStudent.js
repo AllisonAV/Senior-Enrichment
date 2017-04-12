@@ -4,36 +4,47 @@ import React from 'react';
 export default class NewStudent extends React.Component {
 
 
-	// componentDidMount () {
-	//     const selectPlaylist = this.props.selectPlaylist;
-	//     const playlistId = this.props.selectedPlaylist.id;
-
-	//     selectPlaylist(playlistId);
- //  }
 
 
   render () {
 
   	const props = this.props;
-
-  	let warningClassName = props.validInput ? 'hidden' : ''
   	return (
   	<div>
-		<div className={`alert alert-warning ${warningClassName}`}>Names must be between 1 and 16 characters</div>
+		<h2 className="format-font">Add A New Student</h2>
 	    <form className="form-group" onSubmit={props.handleInputValue} style={{marginTop: '20px'}}>
+	    <label>Name:
 	      <input
 	        className="form-control"
 	        placeholder="Enter name"  
 	        onChange={props.setNameValue} 
 	        value={props.NameValue}
 	      />
+	      </label>
+	      <br />
+	      <br />
+	      <label>Email:
 	      <input
 	        className="form-control"
 	        placeholder="Enter email"  
 	        onChange={props.setEmailValue} 
 	        value={props.emailValue}
 	      />
-	      <button className="btn btn-default" disabled={!props.validInput} >Add Student</button>
+	      </label>
+	      <br />
+	      <br />
+	      <label>Campus:</label>
+	      <br />
+	      <select onChange={props.setCampusValue} >Campus:
+		      <option value="">- Please select a campus -</option>
+		      {props.campuses.map(campus => 
+		      	(<option key={campus.id}>{campus.name}</option>)
+		      	)}
+	      </select>
+	      <br />
+	      <br />
+	      <br />
+	      <button className="btn btn-default" >Add Student</button>
 	    </form>
   	</div>)
   }
