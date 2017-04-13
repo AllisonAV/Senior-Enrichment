@@ -10,7 +10,7 @@ export default class campus extends Component {
 			  selectedCampus: {}
 			, students: []
 		}
-		this.handleDelete = this.handleDelete.bind(this);
+		//this.handleDelete = this.handleDelete.bind(this);
 	}
 
 	componentDidMount() {
@@ -28,10 +28,10 @@ export default class campus extends Component {
 		
 		.catch(err => console.error(err))
 	}
-	handleDelete() {
-		axios.delete(`/api/campus/${this.props.params.userId}`)
-		.catch(err => console.error(err))
-	}
+	// handleDelete() {
+	// 	axios.delete(`/api/campus/${this.props.params.userId}`)
+	// 	.catch(err => console.error(err))
+	// }
 
 
 
@@ -48,9 +48,6 @@ export default class campus extends Component {
 					className="format-font"
 					to={`/campus/user/${this.state.selectedCampus.id}`}>List of Students 
 				</Link>  
-				<button className="btn btn-default"
-							onClick={this.handleDelete}
-							>Delete</button>
 			</div>
 		</div>
 		)

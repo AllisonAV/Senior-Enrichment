@@ -1,6 +1,6 @@
 'use strict'
 const api = require('express').Router()
-const Promise = require('bluebird');
+
 const db = require('../db')
 const models = require('../db/models')
 const User = models.User;
